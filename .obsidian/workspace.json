@@ -1,0 +1,220 @@
+{
+  "main": {
+    "id": "8732b79499111f8b",
+    "type": "split",
+    "children": [
+      {
+        "id": "6997ec83b3476d48",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f3b3c4a887fef907",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "spec/gamedesign/stage.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "stage"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "5937c1b457899984",
+    "type": "split",
+    "children": [
+      {
+        "id": "bc131c81fbc06d76",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "edd8dd47e5d4bfff",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "ファイルエクスプローラ"
+            }
+          },
+          {
+            "id": "8c1a8227635da5cc",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "検索"
+            }
+          },
+          {
+            "id": "1a6b87a7015a2773",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "ブックマーク"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "fa140951df464e12",
+    "type": "split",
+    "children": [
+      {
+        "id": "8986e8de0f01b1ec",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d44cf3475f0c29b1",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Welcome.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Welcomeへのバックリンク"
+            }
+          },
+          {
+            "id": "f916ba6e72927c03",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Welcome.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Welcomeからのアウトゴーイングリンク"
+            }
+          },
+          {
+            "id": "20431ed69c473bab",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "タグ"
+            }
+          },
+          {
+            "id": "7bbec91e0e61a5a3",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Welcome.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Welcomeのアウトライン"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:クイックスイッチャーを開く": false,
+      "graph:グラフビューを開く": false,
+      "canvas:新規キャンバスを作成": false,
+      "daily-notes:今日のデイリーノートを開く": false,
+      "templates:テンプレートを挿入": false,
+      "command-palette:コマンドパレットを開く": false
+    }
+  },
+  "active": "f3b3c4a887fef907",
+  "lastOpenFiles": [
+    "unity/Assets/Scenes/SimpleScene.unity.meta",
+    "unity/Assets/Scenes/SimpleScene.unity",
+    "unity/Assets/Materials",
+    "unity/Assets/Skills",
+    "unity/Assets/Prefabs",
+    "unity/Library/PackageCache/com.unity.ide.rider@4d374c7eb6db/Rider/Editor/Util/UnityVersionUtils.cs.meta",
+    "unity/Library/PackageCache/com.unity.ide.rider@4d374c7eb6db/Rider/Editor/Util/StringUtils.cs.meta",
+    "unity/Library/PackageCache/com.unity.ide.rider@4d374c7eb6db/Rider/Editor/Util/UnityVersionUtils.cs",
+    "unity/Library/PackageCache/com.unity.ide.rider@4d374c7eb6db/Rider/Editor/Util/StringUtils.cs",
+    "unity/Library/PackageCache/com.unity.ide.rider@4d374c7eb6db/Rider/Editor/Util/StringBuilderExtensions.cs.meta",
+    "unity/Library/PackageCache/com.unity.ide.rider@4d374c7eb6db/Rider/Editor/Util/StringBuilderExtensions.cs",
+    "unity/Library/PackageCache/com.unity.ide.rider@4d374c7eb6db/Documentation~/images/preferences-rider-tab.png",
+    "unity/Library/PackageCache/com.unity.ide.rider@4d374c7eb6db/Documentation~/images/preferences-settings-external-tools-window.png",
+    "unity/Library/PackageCache/com.unity.ide.rider@4d374c7eb6db/Documentation~/using-the-jetbrains-rider-editor-package.md",
+    "unity/Library/PackageCache/com.unity.ide.rider@4d374c7eb6db/Documentation~/README.md",
+    "unity/Library/PackageCache/com.unity.ide.rider@4d374c7eb6db/Documentation~/index.md",
+    "unity/Library/PackageCache/com.unity.ide.rider@4d374c7eb6db/Documentation~/TableOfContents.md",
+    "unity/Library/PackageCache/com.unity.ide.rider@4d374c7eb6db/LICENSE.md",
+    "unity/Library/PackageCache/com.unity.ide.rider@4d374c7eb6db/CONTRIBUTING.md",
+    "unity/Library/PackageCache/com.unity.ide.rider@4d374c7eb6db/CHANGELOG.md",
+    "unity/Library/PackageCache/com.unity.collections@56bff8827a7e/Unity.Collections.PerformanceTests/Unity.PerformanceTesting.Benchmark/README.md",
+    "unity/Library/PackageCache/com.unity.collections@56bff8827a7e/Unity.Collections.PerformanceTests/Unity.PerformanceTesting.Benchmark/PerformanceTestFrameworkOutput.png",
+    "unity/Library/PackageCache/com.unity.collections@56bff8827a7e/Unity.Collections.PerformanceTests/README.md",
+    "unity/Library/PackageCache/com.unity.collections@56bff8827a7e/Unity.Collections.PerformanceTests/PerformanceTestFrameworkOutputListAdd.png",
+    "unity/Library/PackageCache/com.unity.collections@56bff8827a7e/Unity.Collections.PerformanceTests/PerformanceTestFrameworkOutputFixedSize.png",
+    "unity/Library/PackageCache/com.unity.collections@56bff8827a7e/Documentation~/TableOfContents.md",
+    "unity/Library/PackageCache/com.unity.collections@56bff8827a7e/Documentation~/performance-comparisons.md",
+    "unity/Library/PackageCache/com.unity.collections@56bff8827a7e/Documentation~/performance-comparison-containers.md",
+    "unity/Library/PackageCache/com.unity.collections@56bff8827a7e/Documentation~/performance-comparison-allocators.md",
+    "unity/Library/PackageCache/com.unity.collections@56bff8827a7e/Documentation~/issues.md",
+    "unity/Library/PackageCache/com.unity.collections@56bff8827a7e/Documentation~/index.md",
+    "unity/Library/PackageCache/com.unity.collections@56bff8827a7e/Documentation~/parallel-readers.md",
+    "unity/Library/PackageCache/com.unity.collections@56bff8827a7e/Documentation~/collections-overview.md",
+    "unity/Library/PackageCache/com.unity.collections@56bff8827a7e/Documentation~/allocator-rewindable.md",
+    "unity/Library/PackageCache/com.unity.collections@56bff8827a7e/Documentation~/collection-types.md",
+    "unity/Library/PackageCache/com.unity.collections@56bff8827a7e/Documentation~/allocator-overview.md",
+    "unity/Library/PackageCache/com.unity.collections@56bff8827a7e/Documentation~/allocator-custom-define.md",
+    "unity/Library/PackageCache/com.unity.collections@56bff8827a7e/Documentation~/allocator-custom-use.md",
+    "unity/Library/PackageCache/com.unity.collections@56bff8827a7e/Documentation~/allocation.md",
+    "unity/Library/PackageCache/com.unity.collections@56bff8827a7e/Documentation~/allocator-benchmarks.md",
+    "unity/Library/PackageCache/com.unity.collections@56bff8827a7e/Documentation~/allocator-aliasing.md",
+    "unity/Library/PackageCache/com.unity.multiplayer.center@f3fb577b3546/Editor/MultiplayerCenterWindow/UI/Icons/Questionnaire.png",
+    "unity/Library/PackageCache/com.unity.multiplayer.center@f3fb577b3546/Editor/MultiplayerCenterWindow/UI/Icons/PackageManager@2x.png",
+    "unity/Library/PackageCache/com.unity.multiplayer.center@f3fb577b3546/Editor/MultiplayerCenterWindow/UI/Icons/PackageManager.png",
+    "unity/Library/PackageCache/com.unity.multiplayer.center@f3fb577b3546/Editor/MultiplayerCenterWindow/UI/Icons/PackageInstalled@2x.png",
+    "unity/Library/PackageCache/com.unity.multiplayer.center@f3fb577b3546/Editor/MultiplayerCenterWindow/UI/Icons/PackageInstalled.png"
+  ]
+}
