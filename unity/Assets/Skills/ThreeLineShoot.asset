@@ -15,4 +15,4 @@ MonoBehaviour:
   _coolTime: 3.0
   _attackPower: 15
   _bulletSpeed: 8.0
-  _bulletPrefab: {fileID: 0}
+  _bulletPrefab: {fileID: 7890123456789012345, guid: 9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d, type: 3}
