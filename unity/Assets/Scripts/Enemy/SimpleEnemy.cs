@@ -8,8 +8,9 @@ public class SimpleEnemy : EnemyBase
 
     private float _attackTimer;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _attackTimer = _attackInterval;
     }
 

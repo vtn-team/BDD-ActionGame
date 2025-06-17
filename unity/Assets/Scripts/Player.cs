@@ -57,7 +57,8 @@ public class Player : MonoBehaviour, IHitTarget
         Vector2 moveInput = _playerInput.actions["Move"].ReadValue<Vector2>();
         if (moveInput.magnitude > 0.1f && _canMove && !_isMoving && _actionCooldown <= 0)
         {
-            Vector3 moveDirection = new Vector3(moveInput.x, 0, moveInput.y);
+            // Consider Y=90 rotation: right input should move forward
+            Vector3 moveDirection = new Vector3(moveInput.y, 0, -moveInput.x);
             Move(moveDirection.normalized);
         }
         

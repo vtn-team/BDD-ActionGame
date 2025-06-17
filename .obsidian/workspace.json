@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "spec/code/Editor/StageCreatorEditor.md",
+                "file": "spec/code/Stage/StageCreator.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "StageCreatorEditor"
+              "title": "StageCreator"
             }
           }
         ]
@@ -170,18 +170,19 @@
   },
   "active": "f3b3c4a887fef907",
   "lastOpenFiles": [
-    "spec/code/Enemy/EnemyBase.md",
-    "unity/Temp/ADB-Refresh1a0559cdd10f34b41886159f96f45393",
-    "unity/Temp/UnityTempFile-047d96fdc8fa59a4881b610c43c3d927",
-    "unity/Temp/ADB-Refresh4893034e45bd4d245be3c57ddfe92b9c",
-    "unity/Assets/Scenes/ComplexiveGame.unity.meta",
-    "unity/Assets/Scenes/ComplexiveGame.unity",
-    "unity/Assets/Scenes/SimpleGame.unity.meta",
-    "unity/Assets/Scenes/SimpleGame.unity",
-    "unity/Assets/Scenes/ComplexiveScene.unity.meta",
-    "unity/Assets/Scenes/ComplexiveScene.unity",
-    "unity/Assets/Scenes/SimpleScene 1.unity.meta",
+    "spec/code/Editor/StageCreatorEditor.md",
     "spec/code/Player.md",
+    "unity/Temp/Burst/burst-aot1ditvux3.ohv",
+    "unity/Temp/Burst/burst-aotcttvxzaa.rtl",
+    "unity/Temp/Burst/burst-aotfrxgypyr.87g",
+    "unity/Temp/Burst/burst-aotv4nkqzu9.lce",
+    "unity/Temp/Burst/burst-aotsk8ww9pz.g1e",
+    "unity/Temp/Burst/burst-aot94kaehm7.iuj",
+    "unity/Temp/Burst/burst-aotplmrhhnf.0b3",
+    "unity/Temp/Burst/burst-aotqlgv87ou.mrf",
+    "unity/Temp/Burst/burst-aot5ljewbsa.afm",
+    "unity/Temp/Burst/burst-aotosi7n7mb.v7r",
+    "spec/code/Enemy/EnemyBase.md",
     "spec/code/GameManager.md",
     "spec/code/Skill/ThreeLineShoot.md",
     "spec/code/Skill/SkillBase.md",
@@ -201,7 +202,6 @@
     "spec/code/Informations/CellList.md",
     "spec/code/Skill/ShootBullet.md",
     "spec/code/Effect/Bullet.md",
-    "spec/code/Editor/StageCreatorEditor.md",
     "spec/code/Debug/DebugView.md",
     "spec/gamedesign/skill/threeLineShoot.md",
     "unity/Library/PackageCache/com.unity.cinemachine@b66fdb7cd1f2/Samples~/2D Samples/2D Platformer/Environment/Sprites/TileGroundTop.png",
