@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour, IHitTarget
 {
+    [SerializeField] private bool _canMove = true;
     [SerializeField] private int _generatorID;
     [SerializeField] private int _hitPoint;
     [SerializeField] private float _moveSpeed;
@@ -26,13 +27,8 @@ public class Player : MonoBehaviour, IHitTarget
             _rigidbody.isKinematic = true;
             _rigidbody.useGravity = false;
         }
-
-        _playerInput.actions["Move"].performed += OnMove;
-        _playerInput.actions["Attack01"].performed += ctx => OnSkill(0);
-        _playerInput.actions["Attack02"].performed += ctx => OnSkill(1);
-        _playerInput.actions["Attack03"].performed += ctx => OnSkill(2);
-        _playerInput.actions["Attack04"].performed += ctx => OnSkill(3);
     }
+    
 
     private void Update()
     {
@@ -48,20 +44,42 @@ public class Player : MonoBehaviour, IHitTarget
                 _skillList[i].UpdateCooldown(Time.deltaTime);
             }
         }
-    }
-
-    private void OnMove(InputAction.CallbackContext context)
-    {
-        if (_isMoving || _actionCooldown > 0) return;
-
-        Vector2 input = context.ReadValue<Vector2>();
-        Vector3 moveDirection = new Vector3(input.x, 0, input.y);
         
-        if (moveDirection.magnitude > 0.1f)
+        // Handle input using polling instead of callbacks
+        HandleInput();
+    }
+    
+    private void HandleInput()
+    {
+        if (_playerInput == null) return;
+        
+        // Handle movement input
+        Vector2 moveInput = _playerInput.actions["Move"].ReadValue<Vector2>();
+        if (moveInput.magnitude > 0.1f && _canMove && !_isMoving && _actionCooldown <= 0)
         {
+            Vector3 moveDirection = new Vector3(moveInput.x, 0, moveInput.y);
             Move(moveDirection.normalized);
         }
+        
+        // Handle skill inputs
+        if (_playerInput.actions["Attack01"].WasPressedThisFrame())
+        {
+            OnSkill(0);
+        }
+        if (_playerInput.actions["Attack02"].WasPressedThisFrame())
+        {
+            OnSkill(1);
+        }
+        if (_playerInput.actions["Attack03"].WasPressedThisFrame())
+        {
+            OnSkill(2);
+        }
+        if (_playerInput.actions["Attack04"].WasPressedThisFrame())
+        {
+            OnSkill(3);
+        }
     }
+
 
     private bool IsValidPosition(Vector3 position)
     {

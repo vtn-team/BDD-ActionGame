@@ -16,6 +16,7 @@
 
 
 # SerializeFieldで設定するprivate変数
+```/spec/gamedesign/skill/shootBullet.md``` を参照してデフォルトの値を設定すること
 - attackPower: 攻撃力
 - bulletSpeed: 弾の速度
 

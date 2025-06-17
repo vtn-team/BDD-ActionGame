@@ -117,7 +117,10 @@ public class StageCreator : MonoBehaviour
                     Vector3 dirToPlayer = new Vector3(_playerPos.x - enemyPos.x, 0, _playerPos.y - enemyPos.y);
                     if (dirToPlayer != Vector3.zero)
                     {
-                        return Quaternion.LookRotation(dirToPlayer);
+                        // Calculate angle and snap to 90-degree intervals (X-axis direction)
+                        float angle = Mathf.Atan2(dirToPlayer.x, dirToPlayer.z) * Mathf.Rad2Deg;
+                        float snappedAngle = Mathf.Round(angle / 90f) * 90f;
+                        return Quaternion.Euler(0, snappedAngle, 0);
                     }
                 }
                 return Quaternion.identity;

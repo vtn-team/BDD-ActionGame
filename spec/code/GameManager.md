@@ -13,8 +13,10 @@
 1. AwakeでPlayerとEnemyをシーンから検索する
 	1. Enemyは複数対いる
 	2. CinemachineTargetGroupコンポーネントをFindして取得、PlayerとすべてのEnemyの参照をリストに入れる
-2. Updateで、各コンポーネントのCheckDeadを呼び出し、死んでいたらGameObjectを消す
-3. 勝ったプレイヤーをリザルトに表示する
+2. Updateで、各コンポーネントのCheckDeadを呼び出し、死んでいたらGameObjectのActiveをfalseにする
+3. 勝敗判定をする
+	1. - ```/spec/gamedesign/general.md``` を参照すること
+4. 勝ったプレイヤーをリザルトに表示する
 
 
 # SerializeFieldされたprivate変数

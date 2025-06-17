@@ -14,7 +14,9 @@
 
 # 処理フロー
 1. Builder関数によって生成(Instantiate)される。
-	1. 渡された射出元のpositionから、移動方向のベクトル方向1マス先にInstantiateする。
+	1. BulletのPrefabはResourcesから読み込む。
+	2. 渡された射出元のpositionから、移動方向のベクトル方向1マス先にInstantiateする。
+	3. rotationを進行方向に向くように修正する
 2. Updateで引数でもらった移動方向のベクトル方向に進む。speed秒で1セル分進む。
 3. ステージ外に出たら自分自身を消す
 

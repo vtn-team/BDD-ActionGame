@@ -3,8 +3,8 @@ using UnityEngine;
 [System.Serializable]
 public abstract class SkillBase
 {
-    [SerializeField] private float _actionInterval;
-    [SerializeField] private float _coolTime;
+    [SerializeField] protected float _actionInterval;
+    [SerializeField] protected float _coolTime;
     
     private float _coolTimeTimer;
 

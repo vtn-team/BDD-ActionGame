@@ -4,7 +4,6 @@ using Unity.Cinemachine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject _player;
-    [SerializeField] private GameObject _enemy;
     [SerializeField] private Result _result;
 
     private Player _playerComponent;
@@ -46,35 +45,37 @@ public class GameManager : MonoBehaviour
         // Check enemies first
         foreach (EnemyBase enemy in _enemies)
         {
-            if (enemy != null && enemy.CheckDead())
+            if (enemy != null && enemy.gameObject.activeInHierarchy && enemy.CheckDead())
             {
-                Destroy(enemy.gameObject);
+                enemy.gameObject.SetActive(false);
             }
-            else if (enemy != null)
+            else if (enemy != null && enemy.gameObject.activeInHierarchy)
             {
                 allEnemiesDead = false;
             }
         }
         
         // Check player after enemies
-        if (_playerComponent != null && _playerComponent.CheckDead())
+        if (_playerComponent != null && _playerComponent.gameObject.activeInHierarchy && _playerComponent.CheckDead())
         {
             playerDead = true;
-            Destroy(_playerComponent.gameObject);
+            _playerComponent.gameObject.SetActive(false);
         }
 
-        // Determine result based on death order
+        // Determine result based on game design spec (general.md)
+        // Victory: All enemies eliminated
+        // Defeat: Player eliminated
         if (playerDead && allEnemiesDead)
         {
             _result.ShowResult("Draw");
         }
         else if (playerDead)
         {
-            _result.ShowResult("Game Over");
+            _result.ShowResult("Defeat");
         }
         else if (allEnemiesDead)
         {
-            _result.ShowResult("Player Wins");
+            _result.ShowResult("Victory");
         }
         
         _enemies = FindObjectsByType<EnemyBase>(FindObjectsSortMode.None);

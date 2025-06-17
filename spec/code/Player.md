@@ -23,11 +23,12 @@
 
 
 ## Move: 移動処理
-1. StageCreatorからステージのサイズを取得し、ステージの範囲外に出る入力を無視する
-2. moveSpeedの長さ、進む方向にダイスのように回転しながら1セル分移動する
+1. canMoveがfalseの場合処理をしない
+2. StageCreatorからステージのサイズを取得し、ステージの範囲外に出る入力を無視する
+3. moveSpeedの長さ、進む方向にダイスのように回転しながら1セル分移動する
 	- 移動中は無敵となる
 	- 1回の移動で1回転とする
-	- 
+
 
 ## Skill: スキル処理
 1. キーに対応したIDを取得する。IDと対応するskillを取得する。nullなら処理を終了する
@@ -37,6 +38,7 @@
 
 # SerializeFieldで設定するprivate変数
 プレイヤーの設定  
+- canMove: 移動できるかどうか
 - generatorID: 生成者ID。
 - hitPoint: HP。0になると負け。
 
@@ -51,7 +53,7 @@
 
 # 外部インタフェース
 - IHitTargetに倣う
-- CheckDead: 死亡判定
+- CheckDead: 死亡判定。hitPointが0以下の場合trueを返す。
 
 
 ## キーとスキルの対応表

@@ -8,6 +8,7 @@
 # 実装
 - MonoBehaviourを継承する
 - IHitTargetを実装する
+- Ridigbodyを使用する。ただし物理挙動は使わず、当たり判定のトリガーとしてのみ機能させる。
 - このクラスを派生させてエネミーを表現するため、このクラスはabstract classである
 
 
@@ -16,7 +17,7 @@
 
 
 # 外部インタフェース
-CheckDead: 死亡判定
+CheckDead: 死亡判定。hitPointが0以下の場合trueを返す。
 
 
 # 処理フロー
