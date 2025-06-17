@@ -7,17 +7,19 @@ public class Player : MonoBehaviour, IHitTarget
     [SerializeField] private int _hitPoint;
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _moveInterval;
-    [SerializeField] private SkillBase[] _skillList = new SkillBase[4];
+    [SerializeField, SerializeReference, SubclassSelector] private SkillBase[] _skillList = new SkillBase[4];
 
     private bool _isMoving;
     private float _actionCooldown;
     private PlayerInput _playerInput;
     private Rigidbody _rigidbody;
+    private StageCreator _stageCreator;
 
     private void Awake()
     {
         _playerInput = GetComponent<PlayerInput>();
         _rigidbody = GetComponent<Rigidbody>();
+        _stageCreator = FindFirstObjectByType<StageCreator>();
         
         if (_rigidbody != null)
         {
@@ -61,10 +63,28 @@ public class Player : MonoBehaviour, IHitTarget
         }
     }
 
+    private bool IsValidPosition(Vector3 position)
+    {
+        if (_stageCreator == null) return true;
+        
+        Vector2Int stageSize = _stageCreator.StageSize;
+        int x = Mathf.RoundToInt(position.x);
+        int z = Mathf.RoundToInt(position.z);
+        
+        return x >= 0 && x < stageSize.x && z >= 0 && z < stageSize.y;
+    }
+    
     private void Move(Vector3 direction)
     {
-        _isMoving = true;
         Vector3 targetPosition = transform.position + direction;
+        
+        // Check if target position is within stage bounds
+        if (!IsValidPosition(targetPosition))
+        {
+            return; // Ignore movement outside stage bounds
+        }
+        
+        _isMoving = true;
         StartCoroutine(MoveCoroutine(targetPosition, direction));
         _actionCooldown = _moveInterval;
     }
@@ -72,8 +92,16 @@ public class Player : MonoBehaviour, IHitTarget
     private System.Collections.IEnumerator MoveCoroutine(Vector3 targetPosition, Vector3 direction)
     {
         Vector3 startPosition = transform.position;
+        Quaternion startRotation = transform.rotation;
         float elapsedTime = 0f;
-        float duration = 1f / _moveSpeed;
+        float duration = _moveSpeed;
+
+        // Calculate rotation axis based on movement direction (dice-like rotation)
+        Vector3 rotationAxis = Vector3.Cross(Vector3.up, direction).normalized;
+        if (rotationAxis.magnitude < 0.1f) // Handle forward/backward movement
+        {
+            rotationAxis = Vector3.right;
+        }
 
         while (elapsedTime < duration)
         {
@@ -81,12 +109,16 @@ public class Player : MonoBehaviour, IHitTarget
             float t = elapsedTime / duration;
             
             transform.position = Vector3.Lerp(startPosition, targetPosition, t);
-            transform.Rotate(Vector3.up, 360f * Time.deltaTime * _moveSpeed);
+            
+            // Rotate 90 degrees around the appropriate axis (dice-like rotation)
+            float rotationAngle = Mathf.Lerp(0f, 90f, t);
+            transform.rotation = startRotation * Quaternion.AngleAxis(rotationAngle, rotationAxis);
             
             yield return null;
         }
 
         transform.position = targetPosition;
+        transform.rotation = startRotation * Quaternion.AngleAxis(90f, rotationAxis);
         _isMoving = false;
     }
 

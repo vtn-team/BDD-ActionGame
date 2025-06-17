@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ShootBullet", menuName = "Skills/ShootBullet")]
+[System.Serializable]
 public class ShootBullet : SkillBase
 {
     [SerializeField] private int _attackPower;

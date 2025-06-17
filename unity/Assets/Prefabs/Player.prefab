@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 1234567890123456792}
   - component: {fileID: 1234567890123456793}
   - component: {fileID: 1234567890123456794}
-  - component: {fileID: 1234567890123456795}
-  - component: {fileID: 1234567890123456796}
+  - component: {fileID: 7123389165168042944}
+  - component: {fileID: 2932455775150006582}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -62,10 +62,13 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b, type: 2}
+  - {fileID: 2100000, guid: d3324e202e0cd1d4daf146ab9411bde9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -135,7 +138,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1234567890123456795
+--- !u!114 &7123389165168042944
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,31 +147,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1234567890123456789}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c, type: 3}
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
-  _generatorId: 1
-  _hitPoint: 100
-  _moveSpeed: 2
-  _moveInterval: 0.5
-  _skillList:
-  - {fileID: 11400000, guid: 1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p, type: 2}
-  - {fileID: 11400000, guid: 2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
---- !u!114 &1234567890123456796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1234567890123456789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62199b02ec6938140b1a556c35e38880, type: 3}
-  m_Name: 
-  m_SendPointerHoverToParent: 1
-  m_Actions: {fileID: -944628639613478906, guid: 2f3g4h5i6j7k8l9m0n1o2p3q4r5s6t7u, type: 3}
-  m_NotificationBehavior: 2
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 54707b948d507b942b66c736ebecd7d0,
+    type: 3}
+  m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -179,33 +163,65 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 1f2a3b4c-5d6e-7f8g-9h0i-1j2k3l4m5n6o
-    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 2a3b4c5d-6e7f-8g9h-0i1j-2k3l4m5n6o7p
-    m_ActionName: Player/Attack01[/Keyboard/z,/Gamepad/buttonSouth]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 3b4c5d6e-7f8g-9h0i-1j2k-3l4m5n6o7p8q
-    m_ActionName: Player/Attack02[/Keyboard/x,/Gamepad/buttonEast]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 4c5d6e7f-8g9h-0i1j-2k3l-4m5n6o7p8q9r
-    m_ActionName: Player/Attack03[/Keyboard/c,/Gamepad/buttonNorth]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 5d6e7f8g-9h0i-1j2k-3l4m-5n6o7p8q9r0s
-    m_ActionName: Player/Attack04[/Keyboard/v,/Gamepad/buttonWest]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 6e7f8g9h-0i1j-2k3l-4m5n-6o7p8q9r0s1t
-    m_ActionName: Player/Pause[/Keyboard/escape]
+  m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &2932455775150006582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234567890123456789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26674fe5f99a1e44dbb3426f2230bfee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _generatorID: 1
+  _hitPoint: 100
+  _moveSpeed: 0.5
+  _moveInterval: 0.2
+  _skillList:
+  - rid: 8352682357076000824
+  - rid: 8352682357076000825
+  - rid: 8352682357076000826
+  - rid: 8352682357076000827
+  references:
+    version: 2
+    RefIds:
+    - rid: 8352682357076000824
+      type: {class: ShootBullet, ns: , asm: Assembly-CSharp}
+      data:
+        _actionInterval: 0
+        _coolTime: 0
+        _attackPower: 0
+        _bulletSpeed: 0
+        _bulletPrefab: {fileID: 0}
+    - rid: 8352682357076000825
+      type: {class: ShootBullet, ns: , asm: Assembly-CSharp}
+      data:
+        _actionInterval: 0
+        _coolTime: 0
+        _attackPower: 0
+        _bulletSpeed: 0
+        _bulletPrefab: {fileID: 0}
+    - rid: 8352682357076000826
+      type: {class: ShootBullet, ns: , asm: Assembly-CSharp}
+      data:
+        _actionInterval: 0
+        _coolTime: 0
+        _attackPower: 0
+        _bulletSpeed: 0
+        _bulletPrefab: {fileID: 0}
+    - rid: 8352682357076000827
+      type: {class: ShootBullet, ns: , asm: Assembly-CSharp}
+      data:
+        _actionInterval: 0
+        _coolTime: 0
+        _attackPower: 0
+        _bulletSpeed: 0
+        _bulletPrefab: {fileID: 0}

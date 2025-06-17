@@ -1,0 +1,83 @@
+# GUID辞書 - Unity Asset Management Dictionary
+# Generated from /unity/Assets/*.meta files
+# ファイル名（拡張子含む）をキー、GUIDを値とする辞書
+
+# Scripts - C# source files
+"GameManager.cs": "417ed054ad129ba419e9f2d1fd2829cc"
+"Player.cs": "26674fe5f99a1e44dbb3426f2230bfee"
+"Result.cs": "b14877f7f97a02545990d7b2b705156f"
+"Debug.cs": "cbcf6a9eaa78e4a4baac7076ade1a537"
+"Bullet.cs": "0164111dcc8b135429577cec283a7e6c"
+"EnemyBase.cs": "a8957027c62159446bb822f9fb52e369"
+"SimpleEnemy.cs": "e712855e28e804e4aa4994d8b87b4809"
+"GroundBase.cs": "b0cf79c65eed2d14991f796e051dcb5e"
+"CellList.cs": "43f857875dbac1f43bed5b18a93c81a1"
+"IHitTarget.cs": "2d0fb035df3a78443b4a4d32248b54ae"
+"ShieldBlock.cs": "cf0cb615fff1add4a826d47686dfbe73"
+"ShootBullet.cs": "e58790ef7c3286440b8cd4bcce5c8b88"
+"SkillBase.cs": "6e8252601d7c4364e9edf164efcda240"
+"ThreeLineShoot.cs": "a73093c299bc2d6468cf2ab5397f4d01"
+"StageCreator.cs": "ea66d04d87982e64ca92fc3e2ad06538"
+"SubclassSelectorDrawer.cs": "a1e25bf6be30f4f44b5a8ed767a99abb"
+"SubclassSelectorAttribute.cs": "f7a9c0e84e7f74e4698f00081a25f990"
+
+# Materials - 3D rendering materials
+"BulletMaterial.mat": "0356cf3bc278d0442a0b063ff8dd66ff"
+"EnemyMaterial.mat": "72361e5637823d04d82fa4aa6f30c08e"
+"GroundMaterial.mat": "1460b2445629eb641b7cafe074be3071"
+"PlayerMaterial.mat": "7b24ce4b271b4af438b0cbd9e14907c5"
+"ShieldMaterial.mat": "d3324e202e0cd1d4daf146ab9411bde9"
+
+# Prefabs - Game object templates
+"Bullet.prefab": "ce68e9c2a73a48948969783a297c81b9"
+"GroundTile.prefab": "205c323a0e1951040b82a40ad99593f9"
+"Player.prefab": "f4234349da52ebb4eb3178fbbb564229"
+"ShieldBlock.prefab": "fa1ac35dfd757fc4bb19045daf88eb8b"
+"SimpleEnemy.prefab": "677fdb68f1a5f77458fe1c36bab45da1"
+
+# Scenes - Game levels
+"SampleScene.unity": "99c9720ab356a0642a771bea13969a05"
+"SimpleGame.unity": "2499b9a5d6b6a54408ab85e98a6f5c94"
+"SimpleScene.unity": "9e28985b53d197c4f9557c88a9f0c2fb"
+
+# Settings - Configuration assets
+"PlayerInputActions.inputactions": "2f3g4h5i6j7k8l9m0n1o2p3q4r5s6t7u"
+"SampleSceneProfile.asset": "a6560a915ef98420e9faacc1c7438823"
+"URP-Balanced-Renderer.asset": "e634585d5c4544dd297acaee93dc2beb"
+"URP-Balanced.asset": "e1260c1148f6143b28bae5ace5e9c5d1"
+"URP-HighFidelity-Renderer.asset": "c40be3174f62c4acf8c1216858c64956"
+"URP-HighFidelity.asset": "7b7fd9122c28c4d15b667c7040e3b3fd"
+"URP-Performant-Renderer.asset": "707360a9c581a4bd7aa53bfeb1429f71"
+"URP-Performant.asset": "d0e2fc18fe036412f8223b3b3d9ad574"
+"DefaultVolumeProfile.asset": "2826470018a7d79499cd3427e46e6dad"
+"UniversalRenderPipelineGlobalSettings.asset": "8a7465acddfa36541b9e0a308be5751c"
+
+# Configuration files
+"NuGet.config": "ab99f24787ba1df4e835cb57b87d68ed"
+"packages.config": "df86857c7d482c344bcbf0e1ad685a8b"
+
+# Directory meta files
+"Scripts": "f100e673a892ca94bae31421e72a102c"
+"Materials": "4c8261e01bccb104b901dd30c31ac9a1"
+"Prefabs": "990fde8b92ecec94aa8787f54cfc85cc"
+"Scenes": "d87dafb32f6cd0f4ea8f5e122ced0f05"
+"Settings": "ee3522a1aadec3d4f9484eb8927e8081"
+"Skills": "82ce83ffb530be84bb5a94e9b5e32c2f"
+"ThirdParty": "e54527130bee17943b102e32e3cfa388"
+"Packages": "91fd568e5ae6a6d459615196552ec39a"
+"Debug": "d91f94b0e5c4d9f4898c8ce74ee4ef27"
+"Effect": "5cf71390582b2ac4d8823f69ed3c532e"
+"Enemy": "cf047d48beefc4f44ac2a8251f479676"
+"Ground": "f59b0751409328147b2c89c8695204fa"
+"Informations": "25eeab6c445e0584a9ad21fe46694170"
+"Interface": "e66e015b1c110f94ca5332d71819a144"
+"Obstacle": "7edee64f4ef53f3488f7f87d6bfb3ddd"
+"Skill": "f4276d1b6132eaa4a91897f094b3a73f"
+"Stage": "f815273aed6c79b4a8fece1bc29af3d6"
+"Editor": "3c42fe016ccf3c240af86a4a03b41781"
+"Runtime": "77534f30b788b9a4b9b8b7256f3b3087"
+
+# Skills - Missing GUID assets (found empty meta files)
+# NOTE: These assets do not have GUIDs yet - need to be generated
+# "ShootBullet.asset": ""
+# "ThreeLineShoot.asset": ""

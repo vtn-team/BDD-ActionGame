@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2345678901234567892}
   - component: {fileID: 2345678901234567893}
   - component: {fileID: 2345678901234567894}
-  - component: {fileID: 2345678901234567895}
+  - component: {fileID: 2637542986784536077}
   m_Layer: 0
   m_Name: SimpleEnemy
   m_TagString: Untagged
@@ -60,10 +60,13 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c, type: 2}
+  - {fileID: 2100000, guid: 72361e5637823d04d82fa4aa6f30c08e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -106,7 +109,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2345678901234567895
+--- !u!114 &2637542986784536077
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,9 +118,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 2345678901234567890}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d, type: 3}
+  m_Script: {fileID: 11500000, guid: e712855e28e804e4aa4994d8b87b4809, type: 3}
   m_Name: 
-  _hitPoint: 50
-  _attackInterval: 3
-  _generatorId: 2
-  _skill: {fileID: 11400000, guid: 1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p, type: 2}
+  m_EditorClassIdentifier: 
+  _hitPoint: 10
+  _attackInterval: 5
+  _skill:
+    rid: 8352682370745761851
+  _generatorID: 2
+  references:
+    version: 2
+    RefIds:
+    - rid: 8352682370745761851
+      type: {class: ShootBullet, ns: , asm: Assembly-CSharp}
+      data:
+        _actionInterval: 0
+        _coolTime: 0
+        _attackPower: 0
+        _bulletSpeed: 0
+        _bulletPrefab: {fileID: 7890123456789012345, guid: ce68e9c2a73a48948969783a297c81b9,
+          type: 3}

@@ -3,7 +3,7 @@ using UnityEngine;
 public class SimpleEnemy : EnemyBase
 {
     [SerializeField] private float _attackInterval;
-    [SerializeField] private SkillBase _skill;
+    [SerializeField, SerializeReference, SubclassSelector] private SkillBase _skill;
     [SerializeField] private int _generatorID;
 
     private float _attackTimer;

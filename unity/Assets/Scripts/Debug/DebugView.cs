@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Debug : MonoBehaviour
+public class DebugView : MonoBehaviour
 {
     private void OnGUI()
     {

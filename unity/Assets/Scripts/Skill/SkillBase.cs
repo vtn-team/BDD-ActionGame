@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public abstract class SkillBase : ScriptableObject
+[System.Serializable]
+public abstract class SkillBase
 {
     [SerializeField] private float _actionInterval;
     [SerializeField] private float _coolTime;
