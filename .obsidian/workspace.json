@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "spec/code/Editor/StageCreatorEditor.md",
+                "file": "spec/code/Player.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "StageCreatorEditor"
+              "title": "Player"
             }
           }
         ]
@@ -170,26 +170,28 @@
   },
   "active": "f3b3c4a887fef907",
   "lastOpenFiles": [
-    "spec/code/Player.md",
-    "unity/Library/Artifacts/b2/b2e54a7c8221587f0df771c33c490b7c",
-    "unity/Temp/ADB-Refresh29f1cc8cc3ded114095c1c1b7f2eb80d",
-    "unity/Temp/ADB-Refreshbd6f6281097bb8d4c8b8aa674a4d5d8d",
-    "unity/Library/Artifacts/fc/fc11883294da072ca5d80b7342fc6057",
-    "unity/Temp/ADB-Refreshe7bd26b1d741d134385e668f272efa69",
-    "unity/Temp/ADB-Refresh920b12e47b27fd14b900f0949398cee9",
-    "unity/Library/Search/propertyDatabase.db_f4a0dff7d9bf48d1b2ae26d75cf0c02e_temp",
-    "unity/Temp/UnityTempFile-96227367b79288f4093947b7778b5f1c",
-    "unity/Temp/UnityTempFile-065bb82314a942c468e62cbba98825d2",
-    "unity/Temp/Burst/burst-aottc746f2r.2l2",
+    "unity/Temp/Burst/burst-aotm210iplq.ytw",
+    "unity/Temp/Burst/burst-aotryhewwb8.0js",
+    "unity/Temp/Burst/burst-aotaer5mqh2.9cs",
+    "unity/Temp/Burst/burst-aotucz75a9u.hgi",
+    "unity/Temp/Burst/burst-aotaquy23fj.d4p",
+    "unity/Temp/Burst/burst-aotzremh27v.v6m",
+    "unity/Temp/Burst/burst-aot3yu2ryhw.do8",
+    "unity/Temp/Burst/burst-aotmxjabrfg.x60",
+    "unity/Temp/Burst/burst-aotvmh6hz9w.qj7",
+    "unity/Temp/Burst/burst-aotuwbt96ik.yva",
+    "unity/Temp/Burst/burst-aotr81mj8ra.wtc",
     "spec/code/Editor/StageCreatorEditor.md",
     "spec/code/Stage/StageCreator.md",
     "spec/code/GameManager.md",
+    "spec/code/Player.md",
+    "spec/code/Debug/DebugView.md",
+    "spec/gamedesign/enemy/simple.md",
     "spec/rule/unity.md",
     "spec/rule/coding.md",
     "spec/gamedesign/general.md",
     "spec/gamedesign/Input.md",
     "spec/gamedesign/stage.md",
-    "spec/gamedesign/enemy/simple.md",
     "spec/gamedesign/skill/threeLineShoot.md",
     "spec/gamedesign/gamerule.md",
     "unity/Library/PackageCache/com.unity.cinemachine@b66fdb7cd1f2/Samples~/2D Samples/2D Platformer/Environment/Sprites/TileGroundTop.png",
@@ -213,8 +215,6 @@
     "unity/Library/PackageCache/com.unity.cinemachine@b66fdb7cd1f2/Documentation~/SimplePlayerController.md",
     "unity/Library/PackageCache/com.unity.cinemachine@b66fdb7cd1f2/Documentation~/setup-procedural-behavior.md",
     "unity/Library/PackageCache/com.unity.cinemachine@b66fdb7cd1f2/Documentation~/setup-multiple-cameras.md",
-    "unity/Library/PackageCache/com.unity.cinemachine@b66fdb7cd1f2/Documentation~/setup-follow-camera.md",
-    "unity/Library/PackageCache/com.unity.cinemachine@b66fdb7cd1f2/Documentation~/setup-cinemachine-environment.md",
-    "unity/Library/PackageCache/com.unity.cinemachine@b66fdb7cd1f2/Documentation~/setup-apply-noise.md"
+    "unity/Library/PackageCache/com.unity.cinemachine@b66fdb7cd1f2/Documentation~/setup-follow-camera.md"
   ]
 }
