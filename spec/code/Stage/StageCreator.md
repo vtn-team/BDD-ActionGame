@@ -12,19 +12,7 @@
 
 
 # 処理フロー
-1. エディタ拡張の「ステージ生成」が押される
-2. PlayerクラスをFindしてplayerRefに参照を入れる
-3. ステージ生成処理を実行する
-4. 敵を生成する
-5. 敵の参照を、CinemachineTargetGroupのリストに入れる
-
-
-## ステージ生成処理
-- このGameObjectの子供を全部消去し、CinemachineTargetGroupのリストも同様に削除する
-- ステージの0,0を原点とし、-stageWidth/2～stageWidth/2と-stageHeight/2～stageHeight/2の大きさのステージを生成する
-	- セル生成ルールを参考にすること
-- 敵を生成し、指定位置に配置する
-- プレイヤーを指定位置に移動、配置する
+このクラスはゲーム中何もしない
 
 
 # SerializeFieldされたprivate変数

@@ -9,6 +9,7 @@
 - Unity6のネイティブ実装を利用し、外部ライブラリは使用しない
 - interfaceのインスペクタ指定のために、SubClassSelectorを使用する。
 	- ```/unity/Assets/ThirdParty/Runtime/SubclassSelectorAttribute.cs```と```/unity/Assets/ThirdParty/Editor/SubclassSelectorDrawer.cs```が該当する
+	- 変数の指定にSubClassSelectorの指定がある場合、アトリビュートにSerializeReferenceとSubClassSelectorを追加で指定すること
 
 ## 変数について
 - private変数の先頭には_をつけること

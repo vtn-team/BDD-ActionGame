@@ -10,7 +10,9 @@
 
 
 # 処理フロー
-1. AwakeでPlayerとEnemyコンポーネントを生成し初期化する
+1. AwakeでPlayerとEnemyをシーンから検索する
+	1. Enemyは複数対いる
+	2. CinemachineTargetGroupコンポーネントをFindして取得、PlayerとすべてのEnemyの参照をリストに入れる
 2. Updateで、各コンポーネントのCheckDeadを呼び出し、死んでいたらGameObjectを消す
 3. 勝ったプレイヤーをリザルトに表示する
 
