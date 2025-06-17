@@ -2,13 +2,17 @@ using UnityEngine;
 
 public abstract class EnemyBase : MonoBehaviour, IHitTarget
 {
-    [SerializeField] private int _hitPoint;
+    [SerializeField] private int _maxHitPoint;
     
+    private int _hitPoint;
     private Rigidbody _rigidbody;
     
     protected virtual void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        
+        // Initialize hitPoint with maxHitPoint
+        _hitPoint = _maxHitPoint;
         
         if (_rigidbody != null)
         {

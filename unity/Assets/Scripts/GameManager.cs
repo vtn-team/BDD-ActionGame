@@ -35,6 +35,27 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+        
+        // Generate HitPointGauge for Player and Enemies
+        GenerateHitPointGauges();
+    }
+    
+    private void GenerateHitPointGauges()
+    {
+        // Create HitPointGauge for Player
+        if (_playerComponent != null)
+        {
+            HitPointGauge.Builder(_playerComponent);
+        }
+        
+        // Create HitPointGauge for each Enemy
+        foreach (EnemyBase enemy in _enemies)
+        {
+            if (enemy != null)
+            {
+                HitPointGauge.Builder(enemy);
+            }
+        }
     }
 
     private void Update()

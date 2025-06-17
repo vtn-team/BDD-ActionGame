@@ -13,8 +13,10 @@
 
 
 # SerializeFieldで設定するprivate変数
-- hitPoint: HP
+- maxHitPoint: 最大HP。
 
+# private変数
+- hitPoint: HP。0になると負け。AwakeでmaxHitPointが代入される。
 
 # 外部インタフェース
 CheckDead: 死亡判定。hitPointが0以下の場合trueを返す。

@@ -5,10 +5,12 @@ public class Player : MonoBehaviour, IHitTarget
 {
     [SerializeField] private bool _canMove = true;
     [SerializeField] private int _generatorID;
-    [SerializeField] private int _hitPoint;
+    [SerializeField] private int _maxHitPoint;
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _moveInterval;
     [SerializeField, SerializeReference, SubclassSelector] private SkillBase[] _skillList = new SkillBase[4];
+    
+    private int _hitPoint;
 
     private bool _isMoving;
     private float _actionCooldown;
@@ -21,6 +23,9 @@ public class Player : MonoBehaviour, IHitTarget
         _playerInput = GetComponent<PlayerInput>();
         _rigidbody = GetComponent<Rigidbody>();
         _stageCreator = FindFirstObjectByType<StageCreator>();
+        
+        // Initialize hitPoint with maxHitPoint
+        _hitPoint = _maxHitPoint;
         
         if (_rigidbody != null)
         {

@@ -181,8 +181,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26674fe5f99a1e44dbb3426f2230bfee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canMove: 1
   _generatorID: 1
-  _hitPoint: 100
+  _maxHitPoint: 100
   _moveSpeed: 0.5
   _moveInterval: 0.2
   _skillList:
@@ -200,7 +201,6 @@ MonoBehaviour:
         _coolTime: 0
         _attackPower: 0
         _bulletSpeed: 0
-        _bulletPrefab: {fileID: 0}
     - rid: 8352682357076000825
       type: {class: ShootBullet, ns: , asm: Assembly-CSharp}
       data:
@@ -208,7 +208,6 @@ MonoBehaviour:
         _coolTime: 0
         _attackPower: 0
         _bulletSpeed: 0
-        _bulletPrefab: {fileID: 0}
     - rid: 8352682357076000826
       type: {class: ShootBullet, ns: , asm: Assembly-CSharp}
       data:
@@ -216,7 +215,6 @@ MonoBehaviour:
         _coolTime: 0
         _attackPower: 0
         _bulletSpeed: 0
-        _bulletPrefab: {fileID: 0}
     - rid: 8352682357076000827
       type: {class: ShootBullet, ns: , asm: Assembly-CSharp}
       data:
@@ -224,4 +222,3 @@ MonoBehaviour:
         _coolTime: 0
         _attackPower: 0
         _bulletSpeed: 0
-        _bulletPrefab: {fileID: 0}
