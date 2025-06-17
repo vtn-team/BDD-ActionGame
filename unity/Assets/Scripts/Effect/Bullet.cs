@@ -61,7 +61,7 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    private void OnColliderEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         OnHit(collision.gameObject);
     }

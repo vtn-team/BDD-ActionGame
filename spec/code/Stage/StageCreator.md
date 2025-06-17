@@ -7,12 +7,13 @@
 
 # 実装
 - MonoBehaviourを継承する
-- ステージを生成する
-- このスクリプトはエディタ上でのみ動作する
+- エディタ拡張でステージを生成する
+- アイテムを配置する
 
 
 # 処理フロー
-このクラスはゲーム中何もしない
+1. Startで、アイテムの排出設定があればアイテムを配置する
+	- アイテムは敵がいない通常セルにのみ配置される
 
 
 # 外部インタフェース
@@ -25,12 +26,16 @@
 - cellPrefabList: セルのPrefabリスト。セルIDのENUM分指定する必要がある
 - playerPos: プレイヤー位置の[x,y]を指定する。
 - enemyList: 敵生成構造体のリスト
+- itemList: アイテム生成構造体のリスト
 - cellRuleList: セル生成ルール構造体のリスト
 
 ## 敵生成構造体
 - enemyPos: 敵の生成位置
 - enemyDir: 敵の向き(敵の方向ENUMを参照)
 - enemyPrefab: どの敵を生成するか
+
+## アイテム生成構造体
+- itemPrefab: どのアイテムを生成するか
 
 ## セル生成ルール構造体
 - cellID: セルIDのENUM
@@ -43,6 +48,7 @@
 - ENEMY_DIR_UP: 上を向く
 - ENEMY_DIR_DOWN: 下を向く
 - ENEMY_DIR_RIGHT: 右を向く
+
 
 # その他のprivate変数
 - playerRef: プレイヤーの参照

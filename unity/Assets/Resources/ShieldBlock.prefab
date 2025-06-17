@@ -60,10 +60,13 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f, type: 2}
+  - {fileID: 2100000, guid: d3324e202e0cd1d4daf146ab9411bde9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -115,7 +118,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 4567890123456789012}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a, type: 3}
+  m_Script: {fileID: 11500000, guid: cf0cb615fff1add4a826d47686dfbe73, type: 3}
   m_Name: 
-  _hitPoint: 5
-  _generatorId: -1
+  m_EditorClassIdentifier: 
+  _hitPoint: 30
+  _generatorID: -1

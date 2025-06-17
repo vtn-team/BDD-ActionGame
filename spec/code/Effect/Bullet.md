@@ -23,7 +23,7 @@
 
 # 期待値
 - 当たり判定を以下のロジックで行う
-	- OnColliderEnterで当たり判定を行う
+	- OnCollisionEnterで当たり判定を行う
 	- 対称のGameObjectからIHitTargetを取得する。
 		- IHitTargetがない場合は判定を終了する。
 	- 生成者IDと異なるIDを持つオブジェクトに当たった場合、IHitTargetのDamageを呼び出し、攻撃力を引数に渡す

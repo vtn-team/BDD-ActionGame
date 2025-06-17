@@ -24,6 +24,12 @@ public class StageCreator : MonoBehaviour
     }
 
     [System.Serializable]
+    public struct ItemSpawnData
+    {
+        public GameObject itemPrefab;
+    }
+
+    [System.Serializable]
     public struct CellGenerationRule
     {
         public CellList cellID;
@@ -35,11 +41,21 @@ public class StageCreator : MonoBehaviour
     [SerializeField] private GameObject[] _cellPrefabList;
     [SerializeField] private Vector2Int _playerPos;
     [SerializeField] private EnemySpawnData[] _enemyList;
+    [SerializeField] private ItemSpawnData[] _itemList;
     [SerializeField] private CellGenerationRule[] _cellRuleList;
 
     private Player _playerRef;
     
     public Vector2Int StageSize => new Vector2Int(_stageWidth, _stageHeight);
+    
+    private void Start()
+    {
+        // Generate items if item list is set up
+        if (_itemList != null && _itemList.Length > 0)
+        {
+            SpawnItems();
+        }
+    }
 
 #if UNITY_EDITOR
     [ContextMenu("Generate Stage")]
@@ -97,6 +113,60 @@ public class StageCreator : MonoBehaviour
                 enemy.name = $"Enemy_{enemyData.enemyPos.x}_{enemyData.enemyPos.y}";
             }
         }
+    }
+
+    private void SpawnItems()
+    {
+        if (_itemList == null || _itemList.Length == 0) return;
+        
+        // Get list of valid positions (normal cells without enemies)
+        System.Collections.Generic.List<Vector2Int> validPositions = GetValidItemPositions();
+        
+        // Spawn items randomly on valid positions
+        foreach (ItemSpawnData itemData in _itemList)
+        {
+            if (itemData.itemPrefab != null && validPositions.Count > 0)
+            {
+                // Choose random position from valid positions
+                int randomIndex = Random.Range(0, validPositions.Count);
+                Vector2Int itemPos = validPositions[randomIndex];
+                validPositions.RemoveAt(randomIndex); // Remove to avoid duplicate placement
+                
+                Vector3 position = new Vector3(itemPos.x, 0, itemPos.y);
+                GameObject item = Instantiate(itemData.itemPrefab, position, Quaternion.identity);
+                item.name = $"Item_{itemPos.x}_{itemPos.y}";
+            }
+        }
+    }
+    
+    private System.Collections.Generic.List<Vector2Int> GetValidItemPositions()
+    {
+        System.Collections.Generic.List<Vector2Int> validPositions = new System.Collections.Generic.List<Vector2Int>();
+        System.Collections.Generic.HashSet<Vector2Int> enemyPositions = new System.Collections.Generic.HashSet<Vector2Int>();
+        
+        // Collect enemy positions
+        foreach (EnemySpawnData enemyData in _enemyList)
+        {
+            enemyPositions.Add(enemyData.enemyPos);
+        }
+        
+        // Find all normal ground cells without enemies
+        for (int x = 0; x < _stageWidth; x++)
+        {
+            for (int y = 0; y < _stageHeight; y++)
+            {
+                Vector2Int pos = new Vector2Int(x, y);
+                
+                // Check if position is normal ground and has no enemy
+                CellList cellType = DetermineCellType(x, y);
+                if (cellType == CellList.NORMAL_GROUND && !enemyPositions.Contains(pos) && pos != _playerPos)
+                {
+                    validPositions.Add(pos);
+                }
+            }
+        }
+        
+        return validPositions;
     }
 
     private Quaternion GetEnemyRotation(EnemyDirection direction, Vector2Int enemyPos)

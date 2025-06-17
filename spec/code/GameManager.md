@@ -21,8 +21,7 @@
 
 
 # SerializeFieldされたprivate変数
-- plaer: PlayerのPrefab参照
-- enemy: EnemyのPrefab参照
+- player: PlayerのP参照
 - result: リザルト表示
 
 

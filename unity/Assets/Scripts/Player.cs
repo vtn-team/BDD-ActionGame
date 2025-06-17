@@ -62,8 +62,15 @@ public class Player : MonoBehaviour, IHitTarget
         Vector2 moveInput = _playerInput.actions["Move"].ReadValue<Vector2>();
         if (moveInput.magnitude > 0.1f && _canMove && !_isMoving && _actionCooldown <= 0)
         {
-            // Consider Y=90 rotation: right input should move forward
-            Vector3 moveDirection = new Vector3(moveInput.y, 0, -moveInput.x);
+            // Right or D key input moves to X+
+            Vector3 moveDirection = new Vector3(moveInput.x, 0, moveInput.y);
+            
+            // Set transform.forward to the last input direction
+            if (moveDirection != Vector3.zero)
+            {
+                transform.forward = moveDirection.normalized;
+            }
+            
             Move(moveDirection.normalized);
         }
         
@@ -120,11 +127,33 @@ public class Player : MonoBehaviour, IHitTarget
         float elapsedTime = 0f;
         float duration = _moveSpeed;
 
-        // Calculate rotation axis based on movement direction (dice-like rotation)
-        Vector3 rotationAxis = Vector3.Cross(Vector3.up, direction).normalized;
-        if (rotationAxis.magnitude < 0.1f) // Handle forward/backward movement
+        // Calculate rotation axis for dice-like rolling motion
+        // When moving in transform.forward direction, rotate forward (around right axis)
+        Vector3 rotationAxis;
+        if (Vector3.Dot(direction, transform.forward) > 0.9f) // Moving forward
         {
-            rotationAxis = Vector3.right;
+            rotationAxis = transform.right; // Roll forward
+        }
+        else if (Vector3.Dot(direction, -transform.forward) > 0.9f) // Moving backward
+        {
+            rotationAxis = -transform.right; // Roll backward
+        }
+        else if (Vector3.Dot(direction, transform.right) > 0.9f) // Moving right
+        {
+            rotationAxis = -transform.forward; // Roll right
+        }
+        else if (Vector3.Dot(direction, -transform.right) > 0.9f) // Moving left
+        {
+            rotationAxis = transform.forward; // Roll left
+        }
+        else
+        {
+            // Fallback for diagonal or other directions
+            rotationAxis = Vector3.Cross(Vector3.up, direction).normalized;
+            if (rotationAxis.magnitude < 0.1f)
+            {
+                rotationAxis = Vector3.right;
+            }
         }
 
         while (elapsedTime < duration)
@@ -165,9 +194,16 @@ public class Player : MonoBehaviour, IHitTarget
 
     public bool Damage(int attackPower)
     {
-        if (_isMoving) return false;
+        if (_isMoving && attackPower > 0) return false; // Only block positive damage when moving
         
         _hitPoint -= attackPower;
+        
+        // Clamp hitPoint to not exceed maxHitPoint (for healing)
+        if (_hitPoint > _maxHitPoint)
+        {
+            _hitPoint = _maxHitPoint;
+        }
+        
         return true;
     }
 
