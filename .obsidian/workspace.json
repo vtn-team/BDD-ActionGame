@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "spec/code/Item/HeartItem.md",
+                "file": "spec/rule/unity.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "HeartItem"
+              "title": "unity"
             }
           }
         ]
@@ -168,8 +168,9 @@
       "command-palette:コマンドパレットを開く": false
     }
   },
-  "active": "f3b3c4a887fef907",
+  "active": "edd8dd47e5d4bfff",
   "lastOpenFiles": [
+    "spec/code/Item/HeartItem.md",
     "unity/Assets/Scenes/SimpleGame.unity.meta",
     "unity/Assets/Scenes/SimpleGame.unity",
     "unity/Assets/Scenes/SimpleGameSimpleGame.unity.meta",
@@ -180,14 +181,12 @@
     "unity/Assets/Scenes/ComplexiveGameSimpleGame.unity",
     "unity/Logs/shadercompiler-AssetImportWorker0-0.log",
     "unity/Logs/shadercompiler-AssetImportWorker1-0.log",
-    "unity/Temp/FSTimeGet-df44f87e8e77e9f4cb71acad6e5119bf",
     "spec/code/Item/ItemBase.md",
     "spec/code/Effect/Bullet.md",
     "spec/code/GameManager.md",
     "spec/code/Player.md",
     "spec/code/Stage/StageCreator.md",
     "spec/code/Editor/StageCreatorEditor.md",
-    "spec/code/Item/HeartItem.md",
     "spec/code/Skill/ShootBullet.md",
     "spec/code/Skill/SkillBase.md",
     "spec/code/Debug/DebugView.md",
