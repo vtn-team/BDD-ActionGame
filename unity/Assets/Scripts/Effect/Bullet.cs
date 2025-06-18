@@ -31,7 +31,31 @@ public class Bullet : MonoBehaviour
         bullet._generatorID = generatorID;
         bullet._moveDirection = direction.normalized;
         
+        // Ensure bullet has proper collider for collision detection
+        bullet.EnsureCollider();
+        
         return bullet;
+    }
+    
+    private void EnsureCollider()
+    {
+        // Ensure the bullet has a collider for collision detection
+        Collider bulletCollider = GetComponent<Collider>();
+        if (bulletCollider == null)
+        {
+            BoxCollider boxCollider = gameObject.AddComponent<BoxCollider>();
+            boxCollider.size = Vector3.one * 0.2f; // Small collider for bullet
+            boxCollider.isTrigger = false; // Use solid collider for bullet-to-bullet collision
+        }
+        
+        // Ensure rigidbody for physics collision
+        Rigidbody bulletRigidbody = GetComponent<Rigidbody>();
+        if (bulletRigidbody == null)
+        {
+            bulletRigidbody = gameObject.AddComponent<Rigidbody>();
+            bulletRigidbody.isKinematic = true; // Kinematic for manual movement
+            bulletRigidbody.useGravity = false;
+        }
     }
 
     private void Update()
@@ -73,6 +97,33 @@ public class Bullet : MonoBehaviour
     
     private void OnHit(GameObject hitObject)
     {
+        // Check for bullet-to-bullet collision first
+        Bullet otherBullet = hitObject.GetComponent<Bullet>();
+        if (otherBullet != null)
+        {
+            // Only collide with bullets from different generators
+            if (otherBullet._generatorID != _generatorID)
+            {
+                // Both bullets are destroyed
+                // Use delayed destruction to avoid double-destruction in same frame
+                if (otherBullet.gameObject != null)
+                {
+                    Destroy(otherBullet.gameObject);
+                }
+                if (gameObject != null)
+                {
+                    Destroy(gameObject);
+                }
+                return; // Exit early to avoid further processing
+            }
+            else
+            {
+                // Same generator ID - bullets pass through each other
+                return;
+            }
+        }
+        
+        // Handle collision with other objects (IHitTarget)
         IHitTarget hitTarget = hitObject.GetComponent<IHitTarget>();
         if (hitTarget != null && hitTarget.GetGeneratorID() != _generatorID)
         {

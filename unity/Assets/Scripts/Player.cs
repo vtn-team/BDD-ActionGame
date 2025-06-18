@@ -33,6 +33,20 @@ public class Player : MonoBehaviour, IHitTarget
             _rigidbody.isKinematic = true;
             _rigidbody.useGravity = false;
         }
+        
+        // Ensure player has a collider for item pickup
+        Collider playerCollider = GetComponent<Collider>();
+        if (playerCollider == null)
+        {
+            // Add a box collider if none exists
+            BoxCollider boxCollider = gameObject.AddComponent<BoxCollider>();
+            boxCollider.isTrigger = true; // Set as trigger for item pickup
+        }
+        else
+        {
+            // If collider exists, make sure it's a trigger for item pickup
+            playerCollider.isTrigger = true;
+        }
     }
     
 
@@ -264,6 +278,27 @@ public class Player : MonoBehaviour, IHitTarget
     public void TriggerGroundInteraction()
     {
         CheckGroundInteraction();
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        // Handle item pickup
+        HeartItem heartItem = other.GetComponent<HeartItem>();
+        if (heartItem != null)
+        {
+            // Apply healing through negative damage
+            Damage(-30); // Heal amount from HeartItem
+            
+            // Destroy the item after use
+            Destroy(other.gameObject);
+        }
+        
+        // Handle other item types here if needed
+        // ItemBase item = other.GetComponent<ItemBase>();
+        // if (item != null)
+        // {
+        //     // Process item pickup
+        // }
     }
     
     private Vector3 SnapToAxisDirection(Vector3 direction)

@@ -20,6 +20,10 @@ public class ShootBullet : SkillBase
         Vector3 shootPosition = executor.transform.position;
         Vector3 shootDirection = executor.transform.forward;
         
+        // Ensure bullet only flies in X/Z plane (no Y component)
+        shootDirection.y = 0;
+        shootDirection = shootDirection.normalized;
+        
         IHitTarget executorHitTarget = executor.GetComponent<IHitTarget>();
         int generatorID = executorHitTarget?.GetGeneratorID() ?? 0;
 

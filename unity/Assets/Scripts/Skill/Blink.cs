@@ -22,6 +22,10 @@ public class Blink : SkillBase
         Vector3 currentPosition = executorTransform.position;
         Vector3 forwardDirection = executorTransform.forward;
         
+        // Ensure blink only moves in X/Z plane (no Y component)
+        forwardDirection.y = 0;
+        forwardDirection = forwardDirection.normalized;
+        
         // Calculate target position
         Vector3 targetPosition = currentPosition + forwardDirection * _blinkDistance;
         
