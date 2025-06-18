@@ -103,54 +103,6 @@ public class HitPointGauge : MonoBehaviour
     
     private float GetHPPercentage(IHitTarget target)
     {
-        // This assumes the target has a way to get max HP and current HP
-        // Since IHitTarget doesn't specify HP percentage method, we need to cast to known types
-        if (target is Player player)
-        {
-            return GetPlayerHPPercentage(player);
-        }
-        else if (target is EnemyBase enemy)
-        {
-            return GetEnemyHPPercentage(enemy);
-        }
-        
-        return 1f; // Default to full HP if type unknown
-    }
-    
-    private float GetPlayerHPPercentage(Player player)
-    {
-        // Access private fields through reflection or add public properties
-        // For now, assume HP is accessible (this will need to be updated based on actual implementation)
-        System.Reflection.FieldInfo hitPointField = typeof(Player).GetField("_hitPoint", 
-            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-        System.Reflection.FieldInfo maxHitPointField = typeof(Player).GetField("_maxHitPoint", 
-            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-        
-        if (hitPointField != null && maxHitPointField != null)
-        {
-            int currentHP = (int)hitPointField.GetValue(player);
-            int maxHP = (int)maxHitPointField.GetValue(player);
-            return maxHP > 0 ? (float)currentHP / maxHP : 0f;
-        }
-        
-        return 1f;
-    }
-    
-    private float GetEnemyHPPercentage(EnemyBase enemy)
-    {
-        // Access private fields through reflection or add public properties
-        System.Reflection.FieldInfo hitPointField = typeof(EnemyBase).GetField("_hitPoint", 
-            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-        System.Reflection.FieldInfo maxHitPointField = typeof(EnemyBase).GetField("_maxHitPoint", 
-            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-        
-        if (hitPointField != null && maxHitPointField != null)
-        {
-            int currentHP = (int)hitPointField.GetValue(enemy);
-            int maxHP = (int)maxHitPointField.GetValue(enemy);
-            return maxHP > 0 ? (float)currentHP / maxHP : 0f;
-        }
-        
-        return 1f;
+        return target.GetHPPercentage();
     }
 }

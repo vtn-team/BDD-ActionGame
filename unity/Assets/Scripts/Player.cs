@@ -14,6 +14,7 @@ public class Player : MonoBehaviour, IHitTarget
 
     private bool _isMoving;
     private float _actionCooldown;
+    private float _swampInhibition;
     private PlayerInput _playerInput;
     private Rigidbody _rigidbody;
     private StageCreator _stageCreator;
@@ -41,6 +42,11 @@ public class Player : MonoBehaviour, IHitTarget
         {
             _actionCooldown -= Time.deltaTime;
         }
+        
+        if (_swampInhibition > 0)
+        {
+            _swampInhibition -= Time.deltaTime;
+        }
 
         for (int i = 0; i < _skillList.Length; i++)
         {
@@ -60,15 +66,15 @@ public class Player : MonoBehaviour, IHitTarget
         
         // Handle movement input
         Vector2 moveInput = _playerInput.actions["Move"].ReadValue<Vector2>();
-        if (moveInput.magnitude > 0.1f && _canMove && !_isMoving && _actionCooldown <= 0)
+        if (moveInput.magnitude > 0.1f && _canMove && !_isMoving && _actionCooldown <= 0 && _swampInhibition <= 0)
         {
             // Right or D key input moves to X+
             Vector3 moveDirection = new Vector3(moveInput.x, 0, moveInput.y);
             
-            // Set transform.forward to the last input direction
+            // Set transform.forward to the last input direction, snapped to X/Z axes
             if (moveDirection != Vector3.zero)
             {
-                transform.forward = moveDirection.normalized;
+                transform.forward = SnapToAxisDirection(moveDirection.normalized);
             }
             
             Move(moveDirection.normalized);
@@ -102,7 +108,26 @@ public class Player : MonoBehaviour, IHitTarget
         int x = Mathf.RoundToInt(position.x);
         int z = Mathf.RoundToInt(position.z);
         
-        return x >= 0 && x < stageSize.x && z >= 0 && z < stageSize.y;
+        // Check stage bounds
+        if (x < 0 || x >= stageSize.x || z < 0 || z >= stageSize.y)
+        {
+            return false;
+        }
+        
+        // Check for shield fields that block movement
+        Vector3 groundCheckPosition = position + Vector3.down * 0.5f;
+        Collider[] groundColliders = Physics.OverlapSphere(groundCheckPosition, 0.1f);
+        
+        foreach (Collider collider in groundColliders)
+        {
+            ShieldField shieldField = collider.GetComponent<ShieldField>();
+            if (shieldField != null)
+            {
+                return false; // Cannot move to shield field
+            }
+        }
+        
+        return true;
     }
     
     private void Move(Vector3 direction)
@@ -173,6 +198,25 @@ public class Player : MonoBehaviour, IHitTarget
         transform.position = targetPosition;
         transform.rotation = startRotation * Quaternion.AngleAxis(90f, rotationAxis);
         _isMoving = false;
+        
+        // Check for ground interactions after movement
+        CheckGroundInteraction();
+    }
+    
+    private void CheckGroundInteraction()
+    {
+        Vector3 groundCheckPosition = transform.position + Vector3.down * 0.5f;
+        Collider[] groundColliders = Physics.OverlapSphere(groundCheckPosition, 0.1f);
+        
+        foreach (Collider collider in groundColliders)
+        {
+            Swamp swamp = collider.GetComponent<Swamp>();
+            if (swamp != null)
+            {
+                _swampInhibition = swamp.InhibitionTime;
+                break;
+            }
+        }
     }
 
     private void OnSkill(int skillIndex)
@@ -210,5 +254,33 @@ public class Player : MonoBehaviour, IHitTarget
     public int GetGeneratorID()
     {
         return _generatorID;
+    }
+    
+    public float GetHPPercentage()
+    {
+        return _maxHitPoint > 0 ? (float)_hitPoint / _maxHitPoint : 0f;
+    }
+    
+    public void TriggerGroundInteraction()
+    {
+        CheckGroundInteraction();
+    }
+    
+    private Vector3 SnapToAxisDirection(Vector3 direction)
+    {
+        // Snap direction to the nearest cardinal direction (X or Z axis)
+        float absX = Mathf.Abs(direction.x);
+        float absZ = Mathf.Abs(direction.z);
+        
+        if (absX > absZ)
+        {
+            // X axis is dominant
+            return direction.x > 0 ? Vector3.right : Vector3.left;
+        }
+        else
+        {
+            // Z axis is dominant
+            return direction.z > 0 ? Vector3.forward : Vector3.back;
+        }
     }
 }
