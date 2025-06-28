@@ -45,6 +45,7 @@ public class StageCreator : MonoBehaviour
     [SerializeField] private CellGenerationRule[] _cellRuleList;
 
     private Player _playerRef;
+    private CellList[,] _cellLayout;
     
     public Vector2Int StageSize => new Vector2Int(_stageWidth, _stageHeight);
     
@@ -66,6 +67,13 @@ public class StageCreator : MonoBehaviour
         SpawnEnemies();
         MovePlayer();
     }
+    
+    [ContextMenu("Regenerate Fields Only")]
+    public void RegenerateFieldsOnly()
+    {
+        ClearExistingFields();
+        GenerateCells();
+    }
 
     private void ClearExistingStage()
     {
@@ -74,14 +82,31 @@ public class StageCreator : MonoBehaviour
             DestroyImmediate(transform.GetChild(i).gameObject);
         }
     }
+    
+    private void ClearExistingFields()
+    {
+        // Clear only ground field objects (GroundBase derived objects)
+        for (int i = transform.childCount - 1; i >= 0; i--)
+        {
+            GameObject child = transform.GetChild(i).gameObject;
+            if (child.GetComponent<GroundBase>() != null)
+            {
+                DestroyImmediate(child);
+            }
+        }
+    }
 
     private void GenerateCells()
     {
+        // First, determine the layout for all cells
+        GenerateCellLayout();
+        
+        // Then create the actual cell objects
         for (int x = 0; x < _stageWidth; x++)
         {
             for (int y = 0; y < _stageHeight; y++)
             {
-                CellList cellType = DetermineCellType(x, y);
+                CellList cellType = _cellLayout[x, y];
                 if (cellType != CellList.INVALID_CELL && (int)cellType < _cellPrefabList.Length)
                 {
                     GameObject cellPrefab = _cellPrefabList[(int)cellType];
@@ -95,9 +120,78 @@ public class StageCreator : MonoBehaviour
             }
         }
     }
+    
+    private void GenerateCellLayout()
+    {
+        _cellLayout = new CellList[_stageWidth, _stageHeight];
+        
+        // Calculate total available cells
+        int totalCells = _stageWidth * _stageHeight;
+        
+        // Count how many cells are already assigned by rules
+        int assignedCells = 0;
+        foreach (CellGenerationRule rule in _cellRuleList)
+        {
+            assignedCells += rule.needNum;
+        }
+        
+        // Calculate remaining cells for normal ground
+        int normalGroundCells = totalCells - assignedCells;
+        
+        // Create weighted list based on cell generation rules
+        System.Collections.Generic.List<CellList> cellPool = new System.Collections.Generic.List<CellList>();
+        
+        // Add cells based on rules
+        foreach (CellGenerationRule rule in _cellRuleList)
+        {
+            for (int i = 0; i < rule.needNum; i++)
+            {
+                cellPool.Add(rule.cellID);
+            }
+        }
+        
+        // Fill remaining with normal ground
+        for (int i = 0; i < normalGroundCells; i++)
+        {
+            cellPool.Add(CellList.NORMAL_GROUND);
+        }
+        
+        // Shuffle the pool for random distribution
+        for (int i = 0; i < cellPool.Count; i++)
+        {
+            CellList temp = cellPool[i];
+            int randomIndex = Random.Range(i, cellPool.Count);
+            cellPool[i] = cellPool[randomIndex];
+            cellPool[randomIndex] = temp;
+        }
+        
+        // Assign cells to the 2D layout
+        int poolIndex = 0;
+        for (int y = 0; y < _stageHeight; y++)
+        {
+            for (int x = 0; x < _stageWidth; x++)
+            {
+                if (poolIndex < cellPool.Count)
+                {
+                    _cellLayout[x, y] = cellPool[poolIndex];
+                    poolIndex++;
+                }
+                else
+                {
+                    _cellLayout[x, y] = CellList.NORMAL_GROUND;
+                }
+            }
+        }
+    }
 
     private CellList DetermineCellType(int x, int y)
     {
+        // Use the pre-generated layout if available
+        if (_cellLayout != null && x >= 0 && x < _stageWidth && y >= 0 && y < _stageHeight)
+        {
+            return _cellLayout[x, y];
+        }
+        
         return CellList.NORMAL_GROUND;
     }
 
@@ -158,7 +252,7 @@ public class StageCreator : MonoBehaviour
                 Vector2Int pos = new Vector2Int(x, y);
                 
                 // Check if position is normal ground and has no enemy
-                CellList cellType = DetermineCellType(x, y);
+                CellList cellType = (_cellLayout != null) ? _cellLayout[x, y] : CellList.NORMAL_GROUND;
                 if (cellType == CellList.NORMAL_GROUND && !enemyPositions.Contains(pos) && pos != _playerPos)
                 {
                     validPositions.Add(pos);

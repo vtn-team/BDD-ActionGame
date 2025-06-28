@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3456789012345678904}
   - component: {fileID: 3456789012345678905}
   m_Layer: 0
-  m_Name: SwampTile
+  m_Name: ShieldTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 399540f55208c9d4da28da5b2baa5128, type: 2}
+  - {fileID: 2100000, guid: d3324e202e0cd1d4daf146ab9411bde9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -135,6 +135,53 @@ public class StageCreatorEditor : Editor
         }
     }
     
+    private void RegenerateFieldsWithRetry(StageCreator stageCreator, int maxRetries = 3)
+    {
+        for (int attempt = 0; attempt < maxRetries; attempt++)
+        {
+            try
+            {
+                if (attempt > 0)
+                {
+                    Debug.Log($"Field regeneration attempt {attempt + 1}/{maxRetries}");
+                }
+                
+                stageCreator.RegenerateFieldsOnly();
+                
+                Debug.Log("Fields regenerated successfully!");
+                return;
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogWarning($"Field regeneration failed on attempt {attempt + 1}: {e.Message}");
+                
+                if (attempt < maxRetries - 1)
+                {
+                    // Clear partial fields before retry
+                    ClearFields(stageCreator);
+                }
+                else
+                {
+                    EditorUtility.DisplayDialog("Field Regeneration Failed", 
+                        $"Failed to regenerate fields after {maxRetries} attempts. Last error: {e.Message}", 
+                        "OK");
+                }
+            }
+        }
+    }
+    
+    private void ClearFields(StageCreator stageCreator)
+    {
+        for (int i = stageCreator.transform.childCount - 1; i >= 0; i--)
+        {
+            GameObject child = stageCreator.transform.GetChild(i).gameObject;
+            if (child.GetComponent<GroundBase>() != null)
+            {
+                DestroyImmediate(child);
+            }
+        }
+    }
+    
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
@@ -153,6 +200,20 @@ public class StageCreatorEditor : Editor
                 "Yes", "Cancel"))
             {
                 GenerateStageWithRetry(stageCreator);
+                EditorUtility.SetDirty(stageCreator);
+                SceneView.RepaintAll();
+            }
+        }
+        
+        GUILayout.Space(5);
+        
+        if (GUILayout.Button("Regenerate Fields Only", GUILayout.Height(35)))
+        {
+            if (EditorUtility.DisplayDialog("Regenerate Fields", 
+                "This will delete existing ground fields and generate new ones. Enemies and player will remain. Continue?", 
+                "Yes", "Cancel"))
+            {
+                RegenerateFieldsWithRetry(stageCreator);
                 EditorUtility.SetDirty(stageCreator);
                 SceneView.RepaintAll();
             }
@@ -190,6 +251,7 @@ public class StageCreatorEditor : Editor
         // Help section
         EditorGUILayout.HelpBox(
             "Generate Stage: Creates new stage with validation and retry logic (max 3 attempts)\n" +
+            "Regenerate Fields Only: Regenerates ground fields only, keeping enemies and player\n" +
             "Clear Stage: Removes all stage objects\n" +
             "Validate Settings: Checks for position bounds, duplicates, and overlaps\n\n" +
             "Enemy Direction Options:\n" +

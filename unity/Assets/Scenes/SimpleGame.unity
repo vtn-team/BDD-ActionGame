@@ -2099,7 +2099,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHitPoint: 50
-  _attackInterval: 5
+  _attackInterval: 1
   _skill:
     rid: 8352682370745761851
   _generatorID: 2

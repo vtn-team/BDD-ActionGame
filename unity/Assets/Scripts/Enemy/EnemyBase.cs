@@ -33,4 +33,9 @@ public abstract class EnemyBase : MonoBehaviour, IHitTarget
     }
 
     public abstract int GetGeneratorID();
+    
+    public float GetHPPercentage()
+    {
+        return _maxHitPoint > 0 ? (float)_hitPoint / _maxHitPoint : 0f;
+    }
 }

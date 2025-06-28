@@ -6,8 +6,9 @@ public class HeartItem : ItemBase
     
     protected override void HandleCollision(Collider other)
     {
-        // Check if collided object has Player tag and IHitTarget component
-        if (other.CompareTag("Player"))
+        // Check if collided object has Player component and IHitTarget component
+        Player player = other.GetComponent<Player>();
+        if (player != null)
         {
             IHitTarget hitTarget = other.GetComponent<IHitTarget>();
             if (hitTarget != null)
